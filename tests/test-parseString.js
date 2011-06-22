@@ -27,9 +27,17 @@ plist.parseString("<real>19.80</real>", function(err, res) {
   assert.strictEqual(res, 19.8);
 });
 
+var gotResponse4 = false;
+plist.parseString("<data>PHN0cmluZz5IZWxsbyBXb3JsZCE8L3N0cmluZz4=</data>", function(err, res) {
+  if (err) throw err;
+  gotResponse4 = true;
+  assert.equal(res, '<string>Hello World!</string>');
+});
+
 
 process.on('exit', function() {
   assert.ok(gotResponse1);
   assert.ok(gotResponse2);
   assert.ok(gotResponse3);
+  assert.ok(gotResponse4);
 });
