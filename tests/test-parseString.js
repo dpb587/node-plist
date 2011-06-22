@@ -20,8 +20,16 @@ plist.parseString("<plist><dict><key>test</key><integer>101</integer></dict></pl
   assert.equal(res[0].test, 101);
 });
 
+var gotResponse3 = false;
+plist.parseString("<real>19.80</real>", function(err, res) {
+  if (err) throw err;
+  gotResponse3 = true;
+  assert.strictEqual(res, 19.8);
+});
+
 
 process.on('exit', function() {
   assert.ok(gotResponse1);
   assert.ok(gotResponse2);
+  assert.ok(gotResponse3);
 });
