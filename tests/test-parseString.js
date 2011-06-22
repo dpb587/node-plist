@@ -23,4 +23,5 @@ plist.parseString("<plist><dict><key>test</key><integer>101</integer></dict></pl
 
 process.on('exit', function() {
   assert.ok(gotResponse1);
+  assert.ok(gotResponse2);
 });
